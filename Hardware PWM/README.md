@@ -1,15 +1,9 @@
-# Hardware PWM
-Now that you have done the software version of PWM, now it is time to start leveraging the other features of these Timer Modules.
+# Software Debouncing
 
-## Task
-You need to replicate the same behavior as in the software PWM, only using the Timer Modules ability to directly output to a GPIO Pin instead of managing them in software. 
+## Purpose
+To change the PWM of an LED with a button press on all boards using hardware.
 
-### Hints 
-Read up on the P1SEL registers as well as look at the Timer modules ability to multiplex.
-
-## Extra Work
-### Using ACLK
-Some of these microprocessors have a built in ACLK which is extremely slow compared to your up to 25MHz available on some of them. What is the overall impact on the system when using this clock? Can you actually use your PWM code with a clock that slow?
-
-### Ultra Low Power
-Using a combination of ACLK, Low Power Modes, and any other means you may deem necessary, optimize this PWM code to run at 50% duty cycle with a LED on the MSP430FR5994. In particular, time how long your code can run on the fully charged super capacitor. You do not need to worry about the button control in this case, and you will probably want to disable all the GPIO that you are not using (nudge, nudge, hint, hint).
+## Theory
+The pulse width modulation (PWM) is caused by changing the width of the signal sent by altering when the Timer interrupt. The PWM relies on the CCR# causing the interrupt when the timer reaches that point. The timer is also set to output mode 7 to set and reset when this point is reached thus causing the width of the signal.
+## Board Features
+All boards work the same. When a button is pressed the Red LED will turn on/off.
